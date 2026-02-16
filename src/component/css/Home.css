@@ -1,0 +1,182 @@
+/* ===== БАЗОВІ СТИЛІ ДЛЯ ВСІЄЇ СТОРІНКИ ===== */
+
+.page {
+  max-width: 1200px;                       /* Максимальна ширина блоку галереї */
+  margin: 0 ;                          /* Центруємо галерею по центру екрана */
+  padding-inline: clamp(16px, 4vw, 40px);  /* Адаптивні горизонтальні відступи */
+  padding-block: clamp(16px, 3vw, 48px);   /* Адаптивні вертикальні відступи */
+  font-family: system-ui, sans-serif;      /* Системний шрифт для галереї */
+}
+
+/* Заголовок "Gallery" всередині .page */
+.page > h1 {
+  text-align: left;                      /* Вирівнюємо заголовок по центру */
+  margin-bottom: 24px;                     /* Відступ від заголовка до гріду */
+}
+
+
+/* ===== СІТКА КАРТОК ЗІ СКУЛЬПТУРАМИ ===== */
+
+.grid {
+  display: grid;                                     /* Вмикаємо CSS Grid для галереї */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );                                                 /* Адаптивна кількість колонок [web:43] */
+  gap: 20px;                                         /* Відстань між картками */
+}
+
+/* Окремий елемент (картка) */
+.card {
+max-width: 400px;
+max-height: 400px;
+
+  cursor: pointer;                                   /* Курсор як на кнопці */
+  border-radius: 10px;                              /* Заокруглені кути */
+  overflow: hidden;                                 /* Обрізаємо все, що виходить за рамку */
+  background: #88AD7E;                                 /* Білий фон картки */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);        /* Легка тінь */
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;                                    /* Вертикальна колонка: картинка + текст */
+  flex-direction: column;
+}
+
+/* Ефект при наведенні на картку */
+.card:hover {
+  transform: translateY(-4px);                      /* Трохи піднімаємо картку */
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);       /* Більша тінь при hover */
+}
+
+/* Картинка в картці — однаковий розмір для всіх */
+.card img {
+  width: 100%;                                      /* На всю ширину картки */
+  height: 100%;                                    /* Фіксована висота (однакова для всіх) */
+  object-fit: cover;                                /* Заповнюємо блок, обрізаючи зайве [web:43] */
+  display: block;                                   /* Прибираємо inline-відступи */
+ border-radius: 8px;
+}
+
+/* Назва скульптури під картинкою */
+.card h3 {
+  margin: 10px 14px 14px;                           /* Відступи навколо тексту */
+  font-size: 1rem;                                  /* Розмір шрифту */
+  text-align: center;                               /* Центруємо текст */
+}
+
+
+/* ===== МОДАЛЬНЕ ВІКНО З ФОТО ===== */
+
+/* Затемнений фон за модалкою */
+.modal-backdrop {
+  position: fixed;                                  /* Фіксуємо відносно вікна браузера */
+  inset: 0;                                         /* top/right/bottom/left = 0, на весь екран */
+  background: rgba(0, 0, 0, 0.75);                  /* Напівпрозорий темний фон */
+  display: flex;                                    /* Центруємо модалку по центру */
+  justify-content: center;
+  align-items: center;
+  z-index: 40;                                      /* Вище за інші елементи */
+  padding: 16px;                                    /* Відступи від країв екрана */
+}
+
+/* Саме вікно модалки */
+.modal {
+  background: #88AD7E;                                 /* Темний фон, щоб фото виглядало яскравіше */
+  color: #000000;                                      /* Білий текст */
+  max-width: 960px;                                 /* Максимальна ширина модалки */
+  width: min(100%, 960px);                          /* Не виходить за ширину екрана */
+  padding: 18px 22px 22px;                          /* Внутрішні відступи */
+  border-radius: 10px;                              /* Заокруглені кути модалки */
+  position: relative;                               /* Для позиціонування кнопки закриття */
+  /* нове */
+  max-height: 90vh;     /* не вище 90% висоти екрана */
+  overflow-y: auto;     /* якщо контент більший — з’являється вертикальний скрол */
+}
+
+/* Кнопка закриття "×" у правому верхньому куті */
+.close {
+  position: absolute;                               /* Позиціонуємо поверх модалки */
+  top: 8px;
+  right: 12px;
+  border: none;                                     /* Без рамки */
+  background: transparent;                          /* Прозорий фон */
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Обгортка для картинки та кнопок навігації "<" і ">" */
+.modal-image-wrapper {
+  display: flex;                                    /* Розміщуємо елементи в один ряд */
+  align-items: center;                              /* Вирівнюємо по вертикалі */
+  gap: 12px;                                        /* Відстань між кнопками і фото */
+  margin-top: 16px;                                 /* Відступ від заголовка скульптури */
+}
+
+/* Картинка всередині модалки */
+.modal-image-wrapper img {
+  max-height: min(70vh, 600px);                     /* Не більше 70% висоти екрана або 600px */
+  max-width: 100%;                                  /* Вміщується в ширину модалки */
+  object-fit: contain;                              /* Показуємо фото повністю, не обрізаючи */
+  border-radius: 6px;                               /* Трохи заокруглені кути */
+}
+
+/* Кнопки навігації по фото ("‹" і "›") */
+.modal-image-wrapper button {
+  border: none;                                     /* Без стандартної рамки кнопки */
+  background: rgba(255, 255, 255, 0.12);            /* Напівпрозорий фон */
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  width: 40px;                                      /* Фіксований розмір кнопки */
+  height: 40px;
+  border-radius: 50%;                               /* Робимо кнопки круглими */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ефект при наведенні на кнопки "<" і ">" */
+.modal-image-wrapper button:hover {
+  background: rgba(255, 255, 255, 0.22);            /* Трохи світліший фон при hover */
+}
+
+/* ===== АДАПТАЦІЯ ПІД МАЛЕНЬКІ ЕКРАНИ ===== */
+@media (max-width: 480px) {
+  .card img {
+    height: 180px;                                  /* Зменшуємо висоту картинок на телефонах */
+  }
+
+  .modal {
+    padding: 14px 16px 18px;                        /* Менші внутрішні відступи в модалці */
+  }
+
+  .modal-image-wrapper {
+    gap: 8px;                                       /* Менша відстань між елементами */
+  }
+
+  .modal-image-wrapper button {
+    font-size: 24px;
+    width: 34px;
+    height: 34px;
+  }
+}
+.contact-container {
+    padding: 10px;
+    width: 100%;
+    border-radius: 18px;
+    border: none;
+    text-align : right;
+    display: flex;
+    gap: 20px;
+}
+.contact {
+    background-color: #60b439;
+    border-radius: 18px;
+    padding: 10px;
+
+}
+.opis {
+  white-space: pre-line; /* показує \n як новий рядок */
+  line-height: 1.4;
+}
+
