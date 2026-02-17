@@ -4,12 +4,12 @@
   margin: 0 ;
   padding: 0;
   padding: 2rem;
-  background-color: #A4EF8F;
+  background-color: #f7f7f7;
 }
 html, body {
   margin: 0;
   padding: 0;
-  background: #9cf36f; /* твій зелений фон */
+  background: #080808; /* твій зелений фон */
 }
 .logo {
   height: 6em;

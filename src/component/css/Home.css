@@ -34,7 +34,7 @@ max-height: 400px;
   cursor: pointer;                                   /* Курсор як на кнопці */
   border-radius: 10px;                              /* Заокруглені кути */
   overflow: hidden;                                 /* Обрізаємо все, що виходить за рамку */
-  background: #88AD7E;                                 /* Білий фон картки */
+  background: #dddddd;                                 /* Білий фон картки */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);        /* Легка тінь */
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   display: flex;                                    /* Вертикальна колонка: картинка + текст */
@@ -80,7 +80,7 @@ max-height: 400px;
 
 /* Саме вікно модалки */
 .modal {
-  background: #88AD7E;                                 /* Темний фон, щоб фото виглядало яскравіше */
+  background: #5c5c5c;                                 /* Темний фон, щоб фото виглядало яскравіше */
   color: #000000;                                      /* Білий текст */
   max-width: 960px;                                 /* Максимальна ширина модалки */
   width: min(100%, 960px);                          /* Не виходить за ширину екрана */
@@ -170,7 +170,7 @@ max-height: 400px;
     gap: 20px;
 }
 .contact {
-    background-color: #60b439;
+    background-color: #dddddd;
     border-radius: 18px;
     padding: 10px;
 
