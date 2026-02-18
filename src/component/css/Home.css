@@ -80,7 +80,7 @@ max-height: 400px;
 
 /* Саме вікно модалки */
 .modal {
-  background: #5c5c5c;                                 /* Темний фон, щоб фото виглядало яскравіше */
+  background: #ffffff;                                 /* Темний фон, щоб фото виглядало яскравіше */
   color: #000000;                                      /* Білий текст */
   max-width: 960px;                                 /* Максимальна ширина модалки */
   width: min(100%, 960px);                          /* Не виходить за ширину екрана */
@@ -160,21 +160,24 @@ max-height: 400px;
     height: 34px;
   }
 }
-.contact-container {
-    padding: 10px;
-    width: 100%;
-    border-radius: 18px;
-    border: none;
-    text-align : right;
-    display: flex;
-    gap: 20px;
-}
-.contact {
-    background-color: #dddddd;
-    border-radius: 18px;
-    padding: 10px;
 
+.contact-container {
+  position: fixed;   /* жёстко к окну */
+  top: 90px;         /* расстояние сверху */
+  left: 34px;        /* расстояние слева */
+
+  width: 800px;      /* ширина блока */
+  display: flex;
+  gap: 30px;         /* расстояние между элементами */
 }
+
+
+.company-name {
+  margin-top: 0;
+  margin-bottom: 50px; /* пространство под названием */
+}
+
+
 .opis {
   white-space: pre-line; /* показує \n як новий рядок */
   line-height: 1.4;
