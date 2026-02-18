@@ -14,10 +14,11 @@ Valmistusmateriaali:
 – Teräsputki 250 x 250 mm
 – Metallilanka 3 mm
 – Muoviverkko.`,
-    thumb: '/images/main-bear.png',
+    thumb: '/images/3.JPG',
     photos: [
       '/images/second.png',
       '/images/3.JPG',
+      '/images/main-bear.png',
       '/images/4.png',
       '/images/5.png',
       '/images/6.png',
