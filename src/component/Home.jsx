@@ -1,9 +1,9 @@
-import React from "react";
-import "./css/Home.css"; 
-import { sculptures } from './data/sculptures';
-import { useState } from 'react';
+import React, { useState } from "react";
+import "./css/Home.css";
+import { sculptures } from "./data/sculptures";
+
 function Home() {
-const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [activeSculpture, setActiveSculpture] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
 
@@ -30,95 +30,80 @@ const [open, setOpen] = useState(false);
       activeSculpture.photos.length
     );
   };
-  return (<>
-  <div 
-    className="container">
+
+  return (
+    <>
+      <div className="container">
         <h1 className="company-name">
-            <span>
-                Watching sculptures,V.K.
-            </span>
+          <span>Watching sculptures, V.K.</span>
         </h1>
+
         <div className="contact-container">
-            <p className="contact">
-                <span>email: volodimir.kapula@gmail.com</span>
-            </p>
-            <p className="contact">
-                <span>post number: 77570</span>
-            </p>
-            <p className="contact">
-                <span>address: Jäppilä Huhtimäentie 307</span>
-            </p>
-        </div>                
-        <h2 className="goals">
-            <span>
-                main goals
-            </span>
-        </h2>
-    </div>
-    
-        <div className="page">
-    {/* Заголовок сторінки галереї */}
-    <h1>Gallery</h1>
-
-    {/* Сітка карток зі скульптурами */}
-    <div className="grid">
-        {/* Обходимо масив sculptures і для кожної скульптури рендеримо картку */}
-        {sculptures.map((s) => (
-        <div
-            key={s.id}             // унікальний ключ для React
-            className="card"
-            onClick={() => handleOpen(s)} // при кліку відкриваємо модалку з цією скульптурою
-        >
-            {/* Превʼю зображення скульптури */}
-            <img src={s.thumb} alt={s.title} />
-            {/* Назва скульптури під картинкою */}
-            <h3>{s.title}</h3>
+          <p className="contact">
+            <span>email: volodimir.kapula@gmail.com</span>
+          </p>
+          <p className="contact">
+            <span>post number: 77570</span>
+          </p>
+          <p className="contact">
+            <span>address: Jäppilä Huhtimäentie 307</span>
+          </p>
         </div>
-        ))}
-    </div>
 
-    {/* Модалка (вікно) показується тільки якщо open === true і є активна скульптура */}
-    {open && activeSculpture && (
-        // Затемнений фон позаду модалки, кліком по ньому закриваємо модалку
-        <div className="modal-backdrop" onClick={handleClose}>
-        {/* Власне вікно модалки, зупиняємо "пробивання" кліку, щоб не закривалось при кліку всередині */}
+        <h2 className="goals">
+          <span>main goals</span>
+        </h2>
+      </div>
+
+      <div className="page">
+        {/* Заголовок сторінки галереї */}
+        <h1>Gallery</h1>
+
+        {/* Сітка карток зі скульптурами */}
+        <div className="grid">
+          {sculptures.map((s) => (
             <div
-                className="modal"
-                onClick={(e) => e.stopPropagation()}
+              key={s.id}
+              className="card"
+              onClick={() => handleOpen(s)}
             >
-                {/* Кнопка закриття модалки (хрестик) */}
-                <button className="close" onClick={handleClose}>
+              <img src={s.thumb} alt={s.title} />
+              <h3>{s.title}</h3>
+            </div>
+          ))}
+        </div>
+
+        {/* Модалка */}
+        {open && activeSculpture && (
+          <div className="modal-backdrop" onClick={handleClose}>
+            <div
+              className="modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="close" onClick={handleClose}>
                 ×
-                </button>
+              </button>
 
-                {/* Заголовок модалки – назва активної скульптури */}
-                <h2>{activeSculpture.title}</h2>
-                <p className="opis">{activeSculpture.opis}</p>
+              <h2>{activeSculpture.title}</h2>
+              <p className="opis">{activeSculpture.opis}</p>
 
-                {/* Область з великою картинкою і кнопками перелистування фото */}
-                <div className="modal-image-wrapper">
-                {/* Кнопка перейти до попереднього фото */}
+              {/* Картинка + стрілки */}
+              <div className="modal-image-wrapper">
                 <button onClick={prevPhoto}>‹</button>
 
-                {/* Поточне фото з масиву photos за індексом photoIndex */}
                 <img
-                    src={activeSculpture.photos[photoIndex]}
-                    alt=""
+                  src={activeSculpture.photos[photoIndex]}
+                  alt=""
                 />
 
-                {/* Кнопка перейти до наступного фото */}
                 <button onClick={nextPhoto}>›</button>
-                
+              </div>
             </div>
-        </div>
-        </div>
-    )}
-    </div>
-
-
-
-</>
-)
+          </div>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default Home;
