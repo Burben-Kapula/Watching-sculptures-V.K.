@@ -1,4 +1,6 @@
 // src/data/sculptures.js
+const BASE = import.meta.env.BASE_URL;  // ← додай ЦЕ на самому верху файлу
+
 export const sculptures = [
   {
     id: 1,
@@ -16,14 +18,13 @@ Valmistusmateriaali:
 – Muoviverkko.`,
     thumb: '/images/3.JPG',
     photos: [
-      '/images/second.png',
-      '/images/3.JPG',
-      '/images/main-bear.png',
-      '/images/4.png',
-      '/images/5.png',
-      '/images/6.png',
-      '/images/last.avif',
-
+      `${BASE}images/second.png`,
+      `${BASE}images/3.JPG`,
+      `${BASE}images/main-bear.png`,
+      `${BASE}images/4.png`,
+      `${BASE}images/5.png`,
+      `${BASE}images/6.png`,
+      `${BASE}images/last.avif`,
     ],
   },
 
