@@ -16,7 +16,7 @@ Valmistusmateriaali:
 – Teräsputki 250 x 250 mm
 – Metallilanka 3 mm
 – Muoviverkko.`,
-    thumb: '/images/3.JPG',
+    thumb: `${BASE}images/3.JPG`,          // ← ТУТ теж через BASE
     photos: [
       `${BASE}images/second.png`,
       `${BASE}images/3.JPG`,
