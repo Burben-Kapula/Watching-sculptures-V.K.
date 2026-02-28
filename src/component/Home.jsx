@@ -31,35 +31,37 @@ const [open, setOpen] = useState(false);
     );
   };
   return (<>
-  <div 
-    className="container">
-        <h1 className="company-name">
-            <span>
-                Watching sculptures,V.K.
-            </span>
-        </h1>
-        <div className="contact-container">
-            <p className="contact">
-                <span>email: volodimir.kapula@gmail.com</span>
-            </p>
-            <p className="contact">
-                <span>post number: 77570</span>
-            </p>
-            <p className="contact">
-                <span>address: Jäppilä Huhtimäentie 307</span>
-            </p>
-        </div>                
-        <h2 className="goals">
-            <span>
-                main goals
-            </span>
-        </h2>
-    </div>
-    
-        <div className="page">
-    {/* Заголовок сторінки галереї */}
-    <h1>Gallery</h1>
+    <div className="container">
+    <h1 className="company-name">
+        <span>Watching sculptures,V.K.</span>
+    </h1>
 
+    <div className="contact-container">
+        <p className="contact contact--green">
+        <span>email: volodimir.kapula@gmail.com</span>
+        </p>
+        <p className="contact contact--yellow">
+        <span>post number: 77570</span>
+        </p>
+        <p className="contact contact--red">
+        <span>address: Jäppilä Huhtimäentie 307</span>
+        </p>
+    </div>
+
+    <h4 className="goals">
+        <span>
+        The company represents the original works of this sculptor.
+        The sculptures are made from a variety of materials, using modern technologies and materials.
+        </span>
+    </h4>
+    </div>
+
+    
+    <div className="page">
+    {/* Заголовок сторінки галереї */}
+    <div className="gallery-text"></div>
+    <h1>Gallery</h1>
+    <img src="./public/images/web-img/layer 1.png" alt="" className="header-gallery"/>
     {/* Сітка карток зі скульптурами */}
     <div className="grid">
         {/* Обходимо масив sculptures і для кожної скульптури рендеримо картку */}
@@ -76,6 +78,7 @@ const [open, setOpen] = useState(false);
         </div>
         ))}
     </div>
+    <img src="./public/images/web-img/layer 2.png" alt="" className="footer-gallery"/>
 
     {/* Модалка (вікно) показується тільки якщо open === true і є активна скульптура */}
     {open && activeSculpture && (

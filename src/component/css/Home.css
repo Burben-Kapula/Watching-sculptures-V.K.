@@ -5,7 +5,9 @@
   padding-block: clamp(16px, 3vw, 48px);
   font-family: system-ui, sans-serif;
 }
-
+.container {
+  text-align: center;
+}
 .page > h1 {
   text-align: left;
   margin-bottom: 24px;
@@ -153,20 +155,56 @@
 }
 
 .contact-container {
-  position: fixed;
-  top: 90px;
-  left: 34px;
-  width: 800px;
   display: flex;
-  gap: 30px;
+  flex-direction: column;   /* один під одним */
+  align-items: center;      /* по центру */
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.company-name {
-  margin-top: 0;
-  margin-bottom: 50px;
+  width: 400px;        /* ширина картинки */
+  height: 90px;        /* висота картинки */
+  background-size: 100% 100%;  /* підганяє фон під цей розмір */
+  background-repeat: no-repeat;
+
+  text-align: center;
 }
+.company-name {
+  background-image: url('/images/web-img/company-name.png');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 400px;        /* ширина картинки */
+  height: 150px;        /* висота картинки */
+  background-size: 100% 100%;  /* підганяє фон під цей розмір */
+  background-repeat: no-repeat;
+}
+.contact--green  { background-image: url('/images/web-img/green.png'); }
+.contact--yellow { background-image: url('/images/web-img/yellow.png'); }
+.contact--red    { background-image: url('/images/web-img/red.png'); }
 
 .opis {
-  white-space: pre-line;
-  line-height: 1.4;
+
+}
+.goals{
+
+}
+.gallery-text {
+
+}
+
+.header-gallery {
+  max-width: 300px; /* або будь-яка ширина, наприклад 200px */
+  width: 100%;      /* щоб підлаштовувалась під контейнер */
+  height: auto;     /* пропорції збережуться, нічого не обрізається */
+}
+.footer-gallery {
+  max-width: 300px; /* або будь-яка ширина, наприклад 200px */
+  width: 100%;      /* щоб підлаштовувалась під контейнер */
+  height: auto;     /* пропорції збережуться, нічого не обрізається */
 }
