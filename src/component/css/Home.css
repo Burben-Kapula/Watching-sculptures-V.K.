@@ -1,31 +1,61 @@
+.first,
+.second {
+  background-image: url('/images/web-img/vk (1)-modified.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+  min-height: 800px;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.second {
+  margin-top: 50px;
+}
+
 .page {
   max-width: 1200px;
   margin: 0;
   padding-inline: clamp(16px, 4vw, 40px);
   padding-block: clamp(16px, 3vw, 48px);
-  font-family: system-ui, sans-serif;
 }
-.container {
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
-.page > h1 {
-  text-align: left;
-  margin-bottom: 24px;
+
+.company-name {
+  background-image: url('/images/web-img/company-name.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  width: 400px;
+  height: 250px;
 }
+
+/* ===== Картки (якщо ще потрібні) ===== */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
+  justify-items: center;
 }
 
 .card {
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 100px;
+  max-height: 100px;
   cursor: pointer;
   border-radius: 10px;
   overflow: hidden;
-  background: #dddddd;
+  background: #ddd;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   display: flex;
@@ -46,165 +76,141 @@
 }
 
 .card h3 {
-  margin: 10px 14px 14px;
+  margin: 5px;
   font-size: 1rem;
   text-align: center;
 }
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;                         /* на весь экран */
-  background: rgba(0, 0, 0, 0.7);   /* затемнённый фон по бокам */
-  display: flex;
-  align-items: center;              /* центр по вертикали */
-  justify-content: center;          /* центр по горизонтали */
-  z-index: 40;
-  padding: 0;                       /* без лишних отступов */
-}
-
-.modal {
-  background: #ffffff;
-  color: #000000;
-  max-width: 960px;
-  width: min(100%, 960px);
-  max-height: 100vh;                 /* не выше 90% окна */
-  padding: 24px 24px 20px;          /* приятные отступы внутри */
-  border-radius: 10px;
-  position: relative;
-  overflow-y: auto;                 /* скролл, если текста много */
-}
-
-
-.close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  border: none;
-  background: transparent;
-  color: #fff;
-  font-size: 26px;
-  cursor: pointer;
-}
-
-/* картинка + стрелки */
-.modal-image-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 16px;
-}
-
-.modal-image-wrapper img {
-  max-height: min(70vh, 600px);
-  max-width: 100%;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-/* минимальные стрелки */
-.modal-image-wrapper button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-
-  background: transparent;
-  color: #222;
-  border: none;
-  padding: 0;
-  width: 28px;
-  height: 28px;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: opacity 0.15s ease;
-}
-
-.modal-image-wrapper button:hover {
-  opacity: 0.6;
-}
-
-.modal-image-wrapper button:first-of-type {
-  left: 8px;
-}
-
-.modal-image-wrapper button:last-of-type {
-  right: 8px;
-}
-
-@media (max-width: 480px) {
-  .card img {
-    height: 180px;
-  }
-
-  .modal {
-    padding: 14px 16px 18px;
-  }
-
-  .modal-image-wrapper button {
-    width: 24px;
-    height: 24px;
-    font-size: 20px;
-  }
-}
+/* ===== Контакти ===== */
 
 .contact-container {
   display: flex;
-  flex-direction: column;   /* один під одним */
-  align-items: center;      /* по центру */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   gap: 0.5rem;
   margin-top: 1rem;
 }
+
 .contact {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 400px;        /* ширина картинки */
-  height: 90px;        /* висота картинки */
-  background-size: 100% 100%;  /* підганяє фон під цей розмір */
+  width: 400px;
+  height: 90px;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-
   text-align: center;
 }
-.company-name {
-  background-image: url('/images/web-img/company-name.png');
+
+.contact--green,
+.contact--yellow,
+.contact--red {
+  background-image: url('/images/web-img/yellow.png');
+  font-size: 25px;
+}
+
+/* ===== Текст ===== */
+
+.opis {
+  font-family: system-ui, sans-serif;
+}
+
+.goals {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 20px 28px;
+  border: 3px solid #8b6b3f;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  font-size: 25px;
+}
+
+/* ===== Кнопка скролу ===== */
+
+.scroll-btn {
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #8b6b3f;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  display: block;
+}
+
+/* ===== Заголовок галереї та декор ===== */
+
+.gallery-text {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 400px;        /* ширина картинки */
-  height: 150px;        /* висота картинки */
-  background-size: 100% 100%;  /* підганяє фон під цей розмір */
-  background-repeat: no-repeat;
-}
-.contact--green  { background-image: url('/images/web-img/green.png'); }
-.contact--yellow { background-image: url('/images/web-img/yellow.png'); }
-.contact--red    { background-image: url('/images/web-img/red.png'); }
-
-.opis {
-
-}
-.goals{
-
-}
-.gallery-text {
-
+  text-align: center;
+  font-size: 3rem;
 }
 
-.header-gallery {
-  max-width: 300px; /* або будь-яка ширина, наприклад 200px */
-  width: 100%;      /* щоб підлаштовувалась під контейнер */
-  height: auto;     /* пропорції збережуться, нічого не обрізається */
+.midl,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+
+.header-gallery,
 .footer-gallery {
-  max-width: 300px; /* або будь-яка ширина, наприклад 200px */
-  width: 100%;      /* щоб підлаштовувалась під контейнер */
-  height: auto;     /* пропорції збережуться, нічого не обрізається */
+  width: 300px;
+  height: auto;
+}
+
+/* ===== Слайдер з фіксованим розміром фото ===== */
+
+.slider {
+  margin: 40px auto;
+  max-width: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Фіксований розмір: наприклад 400×400px, можна змінити */
+.slider-image {
+  width: 600px;
+  height: 400px;
+  object-fit: cover;         /* або contain, якщо важливо не обрізати */
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 36px;
+  height: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-btn--prev { left: -18px; }
+.slider-btn--next { right: -18px; }
+
+/* ===== Мобільні дрібні правки ===== */
+
+@media (max-width: 480px) {
+  .slider-image {
+    width: 260px;
+    height: 260px;
+  }
 }

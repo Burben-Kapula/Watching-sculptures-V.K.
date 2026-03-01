@@ -1,5 +1,5 @@
 :root {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Great Vibes", "Segoe Script", "Lucida Handwriting", cursive;
   line-height: 1.5;
   font-weight: 400;
 
@@ -30,6 +30,9 @@ body {
   min-height: 100vh;
   background-color: #f3f3f3;
   color: #222222;
+  font-family: "Great Vibes", "Segoe Script", "Lucida Handwriting", cursive;
+
+
 }
 
 /* Заголовок (если используешь) */

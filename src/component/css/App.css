@@ -4,10 +4,8 @@
   margin: 0;
   padding: 2rem 50px;
 
-  background-image: url('./public/images/web-img/vk (1)-modified.png');
-  background-size: contain;   /* показує всю картинку цілком */
-  background-repeat: no-repeat;
-  background-position: center top; /* або center center */
+  font-family: "Great Vibes", "Segoe Script", "Lucida Handwriting", cursive;
+
 }
 
 /* Щоб сторінка займала всю висоту і фон під неї підлаштовувався */
@@ -16,6 +14,8 @@ html, body {
   padding: 20;
   background: #080808;
   height: 100%;
+    font-family: "Great Vibes", "Segoe Script", "Lucida Handwriting", cursive;
+
 }
 
 .logo {

@@ -1,11 +1,16 @@
-import React from "react";
-import "./css/Home.css"; 
-import { sculptures } from './data/sculptures';
-import { useState } from 'react';
+import React, { useState, useRef } from "react";
+import "./css/Home.css";
+import { sculptures } from "./data/sculptures";
+
 function Home() {
-const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [activeSculpture, setActiveSculpture] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
+
+  const galleryRef = useRef(null);
+  const scrollToGallery = () => {
+    galleryRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleOpen = (sculpture) => {
     setActiveSculpture(sculpture);
@@ -25,103 +30,109 @@ const [open, setOpen] = useState(false);
 
   const prevPhoto = () => {
     if (!activeSculpture) return;
-    setPhotoIndex((i) =>
-      (i - 1 + activeSculpture.photos.length) %
-      activeSculpture.photos.length
+    setPhotoIndex(
+      (i) =>
+        (i - 1 + activeSculpture.photos.length) %
+        activeSculpture.photos.length
     );
   };
-  return (<>
-    <div className="container">
-    <h1 className="company-name">
-        <span>Watching sculptures,V.K.</span>
-    </h1>
 
-    <div className="contact-container">
-        <p className="contact contact--green">
-        <span>email: volodimir.kapula@gmail.com</span>
-        </p>
-        <p className="contact contact--yellow">
-        <span>post number: 77570</span>
-        </p>
-        <p className="contact contact--red">
-        <span>address: Jäppilä Huhtimäentie 307</span>
-        </p>
-    </div>
+  // ОБРАТИ, яку скульптуру показувати як слайдер (наприклад першу)
+  const mainSculpture = sculptures[0];
 
-    <h4 className="goals">
-        <span>
-        The company represents the original works of this sculptor.
-        The sculptures are made from a variety of materials, using modern technologies and materials.
-        </span>
-    </h4>
-    </div>
+  return (
+    <>
+    <section className="first">
 
-    
-    <div className="page">
-    {/* Заголовок сторінки галереї */}
-    <div className="gallery-text"></div>
-    <h1>Gallery</h1>
-    <img src="./public/images/web-img/layer 1.png" alt="" className="header-gallery"/>
-    {/* Сітка карток зі скульптурами */}
-    <div className="grid">
-        {/* Обходимо масив sculptures і для кожної скульптури рендеримо картку */}
-        {sculptures.map((s) => (
-        <div
-            key={s.id}             // унікальний ключ для React
-            className="card"
-            onClick={() => handleOpen(s)} // при кліку відкриваємо модалку з цією скульптурою
-        >
-            {/* Превʼю зображення скульптури */}
-            <img src={s.thumb} alt={s.title} />
-            {/* Назва скульптури під картинкою */}
-            <h3>{s.title}</h3>
-        </div>
-        ))}
-    </div>
-    <img src="./public/images/web-img/layer 2.png" alt="" className="footer-gallery"/>
-
-    {/* Модалка (вікно) показується тільки якщо open === true і є активна скульптура */}
-    {open && activeSculpture && (
-        // Затемнений фон позаду модалки, кліком по ньому закриваємо модалку
-        <div className="modal-backdrop" onClick={handleClose}>
-        {/* Власне вікно модалки, зупиняємо "пробивання" кліку, щоб не закривалось при кліку всередині */}
-            <div
-                className="modal"
-                onClick={(e) => e.stopPropagation()}
-            >
-                {/* Кнопка закриття модалки (хрестик) */}
-                <button className="close" onClick={handleClose}>
-                ×
-                </button>
-
-                {/* Заголовок модалки – назва активної скульптури */}
-                <h2>{activeSculpture.title}</h2>
-                <p className="opis">{activeSculpture.opis}</p>
-
-                {/* Область з великою картинкою і кнопками перелистування фото */}
-                <div className="modal-image-wrapper">
-                {/* Кнопка перейти до попереднього фото */}
-                <button onClick={prevPhoto}>‹</button>
-
-                {/* Поточне фото з масиву photos за індексом photoIndex */}
-                <img
-                    src={activeSculpture.photos[photoIndex]}
-                    alt=""
-                />
-
-                {/* Кнопка перейти до наступного фото */}
-                <button onClick={nextPhoto}>›</button>
-                
+        <div className="container">
+            <div className="header">
+            <h1 className="company-name">
+                <span>Watching sculptures,V.K.</span>
+            </h1>
             </div>
+
+            <div className="contact-container">
+            <p className="contact contact--green">
+                <span>email: volodimir.kapula@gmail.com</span>
+            </p>
+
+            <p className="contact contact--yellow">
+                <span>post number: 77570</span>
+            </p>
+
+            <p className="contact contact--red">
+                <span>address: Jäppilä Huhtimäentie 307</span>
+            </p>
+            </div>
+
+            <h4 className="goals">
+            <span>
+                The company represents the original works of this sculptor. The
+                sculptures are made from a variety of materials, using modern
+                technologies and materials.
+            </span>
+            </h4>
+            <button className="scroll-btn" onClick={scrollToGallery}>
+            ↓ Go to gallery
+          </button>
         </div>
+    </section>
+      <section className="second" ref={galleryRef}>
+            <div className="page">
+            {/* Заголовок сторінки галереї */}
+            <div className="gallery-text" >
+                <span>Gallery</span>
+            </div>
+            <div className="midl">
+            <img
+                src="./public/images/web-img/layer 1.png"
+                alt=""
+                className="header-gallery"
+            />
+            </div>
+
+           {/* ЗАМІСТЬ GRID – одне велике фото зі слайдером */}
+          <div className="slider">
+            <button
+              className="slider-btn slider-btn--prev"
+              onClick={() =>
+                setPhotoIndex(
+                  (i) =>
+                    (i - 1 + mainSculpture.photos.length) %
+                    mainSculpture.photos.length
+                )
+              }
+            >
+              ‹
+            </button>
+
+            <img
+              src={mainSculpture.photos[photoIndex]}
+              alt={mainSculpture.title}
+              className="slider-image"
+            />
+
+            <button
+              className="slider-btn slider-btn--next"
+              onClick={() =>
+                setPhotoIndex(
+                  (i) => (i + 1) % mainSculpture.photos.length
+                )
+              }
+            >
+              ›
+            </button>
+          </div>
+
+
+
+
+
+
         </div>
-    )}
-    </div>
-
-
-
-</>
-)
+      </section>
+    </>
+  );
 }
 
 export default Home;
