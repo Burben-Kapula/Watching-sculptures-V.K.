@@ -52,17 +52,17 @@ function Home() {
             </div>
 
             <div className="contact-container">
-            <p className="contact contact--green">
-                <span>email: volodimir.kapula@gmail.com</span>
-            </p>
+              <p className="contact contact--green">
+                  <span>email: volodimir.kapula@gmail.com</span>
+              </p>
 
-            <p className="contact contact--yellow">
-                <span>post number: 77570</span>
-            </p>
+              <p className="contact contact--yellow">
+                  <span>post number: 77570</span>
+              </p>
 
-            <p className="contact contact--red">
-                <span>address: Jäppilä Huhtimäentie 307</span>
-            </p>
+              <p className="contact contact--red">
+                  <span>address: Jäppilä Huhtimäentie 307</span>
+              </p>
             </div>
 
             <h4 className="goals">

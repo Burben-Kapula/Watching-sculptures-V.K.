@@ -96,8 +96,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: 90px;
+  width: min(400px, 100%);   /* максимум 400, але не більше контейнера */
+  aspect-ratio: 4.4 / 1;     /* замість height, тримає форму таблички */
+  background-size: contain;  /* картинка повністю всередині */
   background-size: 100% 100%;
   background-repeat: no-repeat;
   text-align: center;
@@ -107,7 +108,8 @@
 .contact--yellow,
 .contact--red {
   background-image: url('/images/web-img/yellow.png');
-  font-size: 25px;
+  font-size: clamp(14px, 2vw, 25px); /* мінімум, «плаваюче», максимум */
+  white-space: nowrap;               /* щоб не переносилося на новий рядок */
 }
 
 /* ===== Текст ===== */
@@ -118,8 +120,8 @@
 
 .goals {
   max-width: 900px;
-  margin: 40px auto 0;
   padding: 20px 28px;
+  margin: 0;
   border: 3px solid #8b6b3f;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.9);
@@ -131,7 +133,7 @@
 /* ===== Кнопка скролу ===== */
 
 .scroll-btn {
-  margin: 20px auto 0;
+  margin: 40px auto 0;
   padding: 10px 20px;
   font-size: 1rem;
   color: #fff;
