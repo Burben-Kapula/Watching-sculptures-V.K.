@@ -14,11 +14,11 @@
   margin-top: 50px;
 }
 
-.page {
-  max-width: 1200px;
-  margin: 0;
-  padding-inline: clamp(16px, 4vw, 40px);
-  padding-block: clamp(16px, 3vw, 48px);
+@media (max-width: 768px) {
+  .first,
+  .second {
+    background-image: none;
+  }
 }
 
 .header {
@@ -182,11 +182,13 @@
 
 /* Фіксований розмір: наприклад 400×400px, можна змінити */
 .slider-image {
-  width: 600px;
-  height: 400px;
-  object-fit: cover;         /* або contain, якщо важливо не обрізати */
+  /* Видаляємо aspect-ratio, якщо хочемо задати розміри вручну */
+  width: 500px;  /* Чітка ширина */
+  height: 350px; /* Чітка висота */
+  object-fit: cover; 
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  display: block; /* Щоб не було зайвих відступів знизу */
 }
 
 .slider-btn {
@@ -208,11 +210,128 @@
 .slider-btn--prev { left: -18px; }
 .slider-btn--next { right: -18px; }
 
-/* ===== Мобільні дрібні правки ===== */
+/* ===== Мобільна версія ===== */
+@media (max-width: 768px) {
+  .first,
+  .second {
+    min-height: 400px;
+    padding: 20px 0;
+  }
+
+  .second {
+    margin-top: 20px;
+  }
+
+  .page {
+    padding-inline: clamp(12px, 4vw, 32px);
+    padding-block: clamp(12px, 3vw, 40px);
+  }
+
+  .header {
+    flex-direction: column;
+  }
+
+  .company-name {
+    width: 250px;
+    height: 150px;
+    font-size: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+  }
+
+  .card {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .card img {
+    width: auto;
+    height: auto;
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+  }
+
+  .contact-container {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .contact {
+    width: 100%;
+    aspect-ratio: 5 / 1;
+    font-size: clamp(12px, 3vw, 18px);
+  }
+
+  .goals {
+    max-width: 100%;
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+
+  .scroll-btn {
+    margin: 20px auto 0;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .gallery-text {
+    font-size: 2rem;
+  }
+
+  .midl,
+  .footer {
+    flex-direction: column;
+  }
+
+  .header-gallery,
+  .footer-gallery {
+    width: 200px;
+  }
+
+  .slider {
+    margin: 20px auto;
+    max-width: 100%;
+  }
+
+  .slider-image {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+  }
+
+  .slider-btn {
+    width: 30px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .slider-btn--prev { left: -15px; }
+  .slider-btn--next { right: -15px; }
+}
 
 @media (max-width: 480px) {
+  .company-name {
+    width: 200px;
+    height: 120px;
+    font-size: 1.2rem;
+  }
+
+  .goals {
+    font-size: 16px;
+  }
+
+  .gallery-text {
+    font-size: 1.5rem;
+  }
+
   .slider-image {
-    width: 260px;
-    height: 260px;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
   }
 }
